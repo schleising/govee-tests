@@ -62,26 +62,21 @@ def main():
         if govee_status_response.payload.capabilities is not None:
             for capability in govee_status_response.payload.capabilities:
                 if capability.state is not None:
-                    match capability.instance:
-                        case InstanceType.ONLINE:
+                    match capability.instance, capability.state.value:
+                        case InstanceType.ONLINE, bool(online):
                             # Print the online status of the device
-                            print(f"Online      : {capability.state.value}")
-                        case InstanceType.TEMPERATURE:
+                            print(f"Online      : {online}")
+                        case InstanceType.TEMPERATURE, float(temperature):
                             # Print the temperature in Celsius (converted from Fahrenheit)
-                            if isinstance(capability.state.value, float):
-                                print(
-                                    f"Temperature : {farenheit_to_celsius(capability.state.value):.1f}°C"
-                                )
-                            else:
-                                print("Cannot read temperature value")
-                        case InstanceType.HUMIDITY:
+                            print(
+                                f"Temperature : {farenheit_to_celsius(temperature):.1f}°C"
+                            )
+                        case (
+                            InstanceType.HUMIDITY,
+                            HumidityValue(current_humidity=humidity),
+                        ):
                             # Print the humidity value
-                            if isinstance(capability.state.value, HumidityValue):
-                                print(
-                                    f"Humidity    : {capability.state.value.current_humidity:.1f}%"
-                                )
-                            else:
-                                print("Cannot read humidity value")
+                            print(f"Humidity    : {humidity:.1f}%")
                         case _:
                             # Print the value of the capability
                             print(f"Unknown value: {capability.state.value}")
