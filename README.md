@@ -1,6 +1,6 @@
 # Read Govee Data
 
-Reads Temperature and Humidity data from a Govee H5179 Temperatire and Humidity sensor
+Reads Temperature and Humidity data from a Govee H5179 Temperature and Humidity sensor
 
 ## Usage
 
