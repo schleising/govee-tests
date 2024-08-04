@@ -65,12 +65,12 @@ def main():
                     match capability.instance:
                         case InstanceType.ONLINE:
                             # Print the online status of the device
-                            print(f"Online: {capability.state.value}")
+                            print(f"Online      : {capability.state.value}")
                         case InstanceType.TEMPERATURE:
                             # Print the temperature in Celsius (converted from Fahrenheit)
                             if isinstance(capability.state.value, float):
                                 print(
-                                    f"Temperature: {farenheit_to_celsius(capability.state.value):.1f} degrees"
+                                    f"Temperature : {farenheit_to_celsius(capability.state.value):.1f}°C"
                                 )
                             else:
                                 print("Cannot read temperature value")
@@ -78,7 +78,7 @@ def main():
                             # Print the humidity value
                             if isinstance(capability.state.value, HumidityValue):
                                 print(
-                                    f"Value: {capability.state.value.current_humidity:.1f}%"
+                                    f"Humidity    : {capability.state.value.current_humidity:.1f}%"
                                 )
                             else:
                                 print("Cannot read humidity value")
