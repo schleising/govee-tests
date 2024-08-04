@@ -4,12 +4,23 @@ Reads Temperature and Humidity data from a Govee H5179 Temperatire and Humidity 
 
 ## Usage
 
+### Get an API Key
 Apply for an API key using the instructions [here](https://developer.govee.com/reference/apply-you-govee-api-key), store the key in a file called `govee_api_key.txt` in the same directory as the script.
+
+### Install the Dependencies
+
+Install the required dependencies with the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run the Script
 
 Run the script with the following command:
 
 ```bash
-python3 main.py
+python main.py
 ```
 
 ## Output
