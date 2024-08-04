@@ -39,9 +39,7 @@ def main():
 
         # Create a request to get the status of the device
         payload = GoveeStatusRequestPayload(sku=device.sku, device=device.device)
-
         request = GoveeStatusRequest(payload=payload)
-
         data = request.model_dump(by_alias=True)
 
         # Get the status of the device
